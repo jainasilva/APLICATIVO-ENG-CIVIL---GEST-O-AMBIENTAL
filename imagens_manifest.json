@@ -1,0 +1,226 @@
+﻿[
+    {
+        "slide":  1,
+        "title":  "Slide 1",
+        "path":  "slide01.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide01.png",
+        "size_bytes":  1178614
+    },
+    {
+        "slide":  2,
+        "title":  "Slide 2",
+        "path":  "slide02.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide02.png",
+        "size_bytes":  248026
+    },
+    {
+        "slide":  3,
+        "title":  "Slide 3",
+        "path":  "slide03.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide03.png",
+        "size_bytes":  163107
+    },
+    {
+        "slide":  4,
+        "title":  "Slide 4",
+        "path":  "slide04.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide04.png",
+        "size_bytes":  680466
+    },
+    {
+        "slide":  5,
+        "title":  "Slide 5",
+        "path":  "slide05.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide05.png",
+        "size_bytes":  43604
+    },
+    {
+        "slide":  6,
+        "title":  "Slide 6",
+        "path":  "slide06.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide06.png",
+        "size_bytes":  3517071
+    },
+    {
+        "slide":  7,
+        "title":  "Slide 7",
+        "path":  "slide07.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide07.png",
+        "size_bytes":  1532918
+    },
+    {
+        "slide":  8,
+        "title":  "Slide 8",
+        "path":  "slide08.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide08.png",
+        "size_bytes":  563392
+    },
+    {
+        "slide":  9,
+        "title":  "Slide 9",
+        "path":  "slide09.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide09.png",
+        "size_bytes":  816544
+    },
+    {
+        "slide":  10,
+        "title":  "Slide 10",
+        "path":  "slide10.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide10.png",
+        "size_bytes":  106545
+    },
+    {
+        "slide":  10,
+        "title":  "Slide 10",
+        "path":  "slide10_agua.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide10_agua.png",
+        "size_bytes":  106545
+    },
+    {
+        "slide":  11,
+        "title":  "Slide 11",
+        "path":  "slide11.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide11.png",
+        "size_bytes":  51652
+    },
+    {
+        "slide":  12,
+        "title":  "Slide 12",
+        "path":  "slide12.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide12.png",
+        "size_bytes":  1009050
+    },
+    {
+        "slide":  13,
+        "title":  "Slide 13",
+        "path":  "slide13.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide13.png",
+        "size_bytes":  163994
+    },
+    {
+        "slide":  14,
+        "title":  "Slide 14",
+        "path":  "slide14.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide14.png",
+        "size_bytes":  522734
+    },
+    {
+        "slide":  15,
+        "title":  "Slide 15",
+        "path":  "slide15.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide15.png",
+        "size_bytes":  726241
+    },
+    {
+        "slide":  16,
+        "title":  "Slide 16",
+        "path":  "slide16.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide16.png",
+        "size_bytes":  824832
+    },
+    {
+        "slide":  17,
+        "title":  "Slide 17",
+        "path":  "slide17.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide17.png",
+        "size_bytes":  754897
+    },
+    {
+        "slide":  18,
+        "title":  "Slide 18",
+        "path":  "slide18.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide18.png",
+        "size_bytes":  66010
+    },
+    {
+        "slide":  19,
+        "title":  "Slide 19",
+        "path":  "slide19.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide19.png",
+        "size_bytes":  206058
+    },
+    {
+        "slide":  20,
+        "title":  "Slide 20",
+        "path":  "slide20.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide20.png",
+        "size_bytes":  912187
+    },
+    {
+        "slide":  21,
+        "title":  "Slide 21",
+        "path":  "slide21.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide21.png",
+        "size_bytes":  951753
+    },
+    {
+        "slide":  22,
+        "title":  "Slide 22",
+        "path":  "slide22.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide22.png",
+        "size_bytes":  494311
+    },
+    {
+        "slide":  23,
+        "title":  "Slide 23",
+        "path":  "slide23.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide23.png",
+        "size_bytes":  616657
+    },
+    {
+        "slide":  24,
+        "title":  "Slide 24",
+        "path":  "slide24.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide24.png",
+        "size_bytes":  1397102
+    },
+    {
+        "slide":  25,
+        "title":  "Slide 25",
+        "path":  "slide25.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide25.png",
+        "size_bytes":  3405031
+    },
+    {
+        "slide":  26,
+        "title":  "Slide 26",
+        "path":  "slide26.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide26.png",
+        "size_bytes":  1115906
+    },
+    {
+        "slide":  27,
+        "title":  "Slide 27",
+        "path":  "slide27.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide27.png",
+        "size_bytes":  845848
+    },
+    {
+        "slide":  28,
+        "title":  "Slide 28",
+        "path":  "slide28.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide28.png",
+        "size_bytes":  447974
+    },
+    {
+        "slide":  29,
+        "title":  "Slide 29",
+        "path":  "slide29.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide29.png",
+        "size_bytes":  2928308
+    },
+    {
+        "slide":  30,
+        "title":  "Slide 30",
+        "path":  "slide30.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide30.png",
+        "size_bytes":  1373676
+    },
+    {
+        "slide":  31,
+        "title":  "Slide 31",
+        "path":  "slide31.png",
+        "description":  "Imagem padronizada usada no aplicativo: slide31.png",
+        "size_bytes":  684387
+    }
+]

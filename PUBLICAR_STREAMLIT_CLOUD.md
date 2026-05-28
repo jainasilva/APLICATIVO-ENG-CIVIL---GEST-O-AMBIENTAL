@@ -1,36 +1,27 @@
-﻿# Publicação no Streamlit Cloud - imagens do aplicativo
+﻿# Publicação no Streamlit Cloud - pacote correto
 
-Para as imagens aparecerem no aplicativo publicado, envie para o GitHub/Streamlit Cloud estes itens juntos:
+Envie para o GitHub/Streamlit Cloud o CONTEÚDO desta pasta:
 
-- streamlit_app.py
-- requirements.txt
-- pasta data inteira
-- pasta assets inteira
+PACOTE_STREAMLIT_CLOUD
 
-Estrutura esperada:
+Estrutura correta:
 
-Aplicativo/
-  streamlit_app.py
-  requirements.txt
-  data/
-    slides.json
-    slides-data.js
-    registros_residuos.json
-  assets/
-    images/
-      apresentacao/
-      pptx/
-      image1.png ...
+streamlit_app.py
+requirements.txt
+data/
+  slides.json
+  slides-data.js
+  imagens_manifest.json
+assets/
+  images/
+    slide01.png
+    slide02.png
+    ...
+    slide31.png
+    slide10_agua.png
 
-Observações importantes:
-
-- Não publique somente o arquivo streamlit_app.py, porque as fotos ficam dentro de assets/images.
-- O Streamlit Cloud diferencia maiúsculas e minúsculas. Use exatamente assets/images, em letras minúsculas.
-- Depois de atualizar no GitHub, no Streamlit Cloud clique em Reboot app ou Manage app > Reboot.
-- Se ainda aparecer sem imagem, abra a seção Galeria e veja o diagnóstico. Ele deve mostrar se assets/images foi encontrado.
-
-Correção aplicada no código:
-
-- O app agora procura imagens também dentro das subpastas assets/images/apresentacao e assets/images/pptx.
-- O app também procura slides em mais de uma pasta data.
-- Se slides.json ou slides-data.js não forem encontrados, o app tenta montar a galeria a partir das imagens disponíveis.
+Importante:
+- A pasta certa das imagens é assets/images.
+- Não use as pastas antigas assets/images/apresentacao ou assets/images/pptx.
+- Não publique apenas streamlit_app.py; publique também data e assets.
+- No Streamlit Cloud/GitHub, mantenha letras minúsculas exatamente como assets/images.

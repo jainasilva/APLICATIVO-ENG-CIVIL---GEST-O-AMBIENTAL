@@ -1,0 +1,72 @@
+[
+  {
+    "id": "r1",
+    "data": "2026-05-10",
+    "tipo": "Cinzas (CAL) industriais",
+    "classe": "Classe IIA",
+    "origem": "Caldeira de recuperacao",
+    "quantidade": 850.0,
+    "destino": "Reaproveitamento energético",
+    "status": "Destinado"
+  },
+  {
+    "id": "r2",
+    "data": "2026-05-11",
+    "tipo": "Resíduos recicláveis",
+    "classe": "Classe IIB",
+    "origem": "Area administrativa",
+    "quantidade": 210.0,
+    "destino": "Reciclagem",
+    "status": "Destinado"
+  },
+  {
+    "id": "r3",
+    "data": "2026-05-12",
+    "tipo": "Óleos lubrificantes",
+    "classe": "Classe I",
+    "origem": "Oficina mecanica",
+    "quantidade": 120.0,
+    "destino": "Tratamento externo especializado",
+    "status": "Em transporte"
+  },
+  {
+    "id": "r4",
+    "data": "2026-05-13",
+    "tipo": "Lodo biológico",
+    "classe": "Classe IIA",
+    "origem": "ETE industrial",
+    "quantidade": 430.0,
+    "destino": "Coprocessamento",
+    "status": "Aguardando coleta"
+  },
+  {
+    "id": "c72af4de-bd3d-4b00-a5da-323cc37c883c",
+    "data": "2026-05-13",
+    "tipo": "Filtros de óleo usados",
+    "classe": "Classe I",
+    "origem": "Amanda Libardoni",
+    "quantidade": 0.301,
+    "destino": "Reaproveitamento energético",
+    "status": "Aguardando coleta"
+  },
+  {
+    "id": "21197178-0300-4510-b79a-46b7ada7e295",
+    "data": "2026-05-13",
+    "tipo": "Cinzas (CAL) industriais",
+    "classe": "Classe IIA",
+    "origem": "Amanda Libardoni",
+    "quantidade": 50.0,
+    "destino": "Reciclagem",
+    "status": "Em transporte"
+  },
+  {
+    "id": "1ec2b285-dc96-40f1-b923-40229e4dcb2d",
+    "data": "2026-05-13",
+    "tipo": "Cinzas (CAL) industriais",
+    "classe": "Classe IIA",
+    "origem": "Amanda Libardoni",
+    "quantidade": 50.0,
+    "destino": "Reciclagem",
+    "status": "Em transporte"
+  }
+]
