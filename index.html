@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestão de Resíduos | Bracell</title>
+  <link rel="stylesheet" href="styles.css?v=20260527agua10" />
+</head>
+<body id="topo-app">
+  <div class="bg-shape bg-shape-a"></div>
+  <div class="bg-shape bg-shape-b"></div>
+
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Aplicativo Operacional</p>
+      <h1>Gestão de Resíduos Industriais</h1>
+      <p class="subtitle">Baseado na apresentação de Gestão Ambiental da Bracell</p>
+    </div>
+    <div class="topbar-controls">
+      <div class="theme-switch" role="group" aria-label="Selecionar tema">
+        <button type="button" class="btn theme-toggle" id="theme-light" data-theme="light" aria-label="Tema claro" title="Tema claro">☀</button>
+        <button type="button" class="btn theme-toggle" id="theme-dark" data-theme="dark" aria-label="Tema escuro" title="Tema escuro">🌙</button>
+      </div>
+      <nav class="nav-links" role="tablist" aria-label="Abas do aplicativo">
+        <a href="#dashboard" data-page-link="dashboard" role="tab">Dashboard</a>
+        <a href="#residuos" data-page-link="residuos" role="tab">Resíduos</a>
+        <a href="#tratamento" data-page-link="tratamento" role="tab">Tratamento</a>
+        <a href="#planos" data-page-link="planos" role="tab">Planos de Ação</a>
+        <a href="#relatorio" data-page-link="relatorio" role="tab">Relatório PRAD</a>
+        <a href="#galeria" data-page-link="galeria" role="tab">Galeria</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero card reveal app-page dashboard-page" data-page="dashboard">
+      <div>
+        <h2>Visão Estratégica</h2>
+        <p>
+          Plataforma para registrar, acompanhar e analisar a gestão de resíduos com base nos indicadores,
+          práticas e planos de mitigação apresentados no estudo.
+        </p>
+        <div class="hero-badges">
+          <span>ISO 14001</span>
+          <span>PNRS 12.305/2010</span>
+          <span>Rastreabilidade MTR/CDF</span>
+          <span>Meta 2030: -90% aterro</span>
+        </div>
+      </div>
+      <img src="assets/images/slide01.png" alt="Capa da apresentação de gestão ambiental" />
+    </section>
+
+    <section id="dashboard" class="card reveal app-page dashboard-page" data-page="dashboard">
+      <div class="section-head">
+        <h2>Dashboard Ambiental</h2>
+        <p>Indicadores da apresentação + dados operacionais cadastrados no aplicativo.</p>
+      </div>
+      <div id="dashboard-images" class="image-mosaic"></div>
+      <div id="dashboard-tipos-residuos" class="tipos-residuos"></div>
+      <div id="kpi-grid" class="kpi-grid"></div>
+
+      <div class="stats-grid">
+        <article class="stats-card">
+          <h3>Status dos Registros</h3>
+          <div id="status-bars" class="bars"></div>
+        </article>
+        <article class="stats-card">
+          <h3>Destinação Atual</h3>
+          <div id="destino-list" class="list"></div>
+        </article>
+        <article class="stats-card">
+          <h3>Resumo Operacional</h3>
+          <ul id="resumo-operacional" class="simple-list"></ul>
+        </article>
+      </div>
+
+      <div class="chart-grid">
+        <article class="stats-card chart-card">
+          <h3>Gráfico de Destinação (kg)</h3>
+          <div id="chart-destino" class="donut-chart"></div>
+          <div id="chart-destino-legend" class="chart-legend"></div>
+        </article>
+        <article class="stats-card chart-card">
+          <h3>Gráfico de Status (Registros)</h3>
+          <div id="chart-status" class="donut-chart"></div>
+          <div id="chart-status-legend" class="chart-legend"></div>
+        </article>
+        <article class="stats-card chart-card">
+          <h3>Classe de Resíduo (kg)</h3>
+          <div id="chart-classe-bar" class="stacked-chart"></div>
+          <div id="chart-classe-legend" class="chart-legend"></div>
+        </article>
+      </div>
+
+      <div class="insights-grid">
+        <article class="stats-card insight-wide">
+          <h3>Tendência Mensal de Geração (kg)</h3>
+          <div id="tendencia-mensal" class="trend-bars"></div>
+        </article>
+        <article class="stats-card insight-wide">
+          <h3>Comparativo Mensal: Valorização x Aterro</h3>
+          <div class="compare-legend">
+            <span><i class="legend-dot valor"></i> Valorização</span>
+            <span><i class="legend-dot aterro"></i> Aterro</span>
+          </div>
+          <div id="comparativo-mensal" class="compare-bars-list"></div>
+        </article>
+        <article class="stats-card">
+          <h3>Distribuição por Classe</h3>
+          <div id="classe-bars" class="bars"></div>
+        </article>
+        <article class="stats-card">
+          <h3>Eficiência de Destinação</h3>
+          <ul id="eficiencia-list" class="simple-list"></ul>
+        </article>
+        <article class="stats-card">
+          <h3>Top Setores Geradores</h3>
+          <div id="origem-list" class="list"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="residuos" class="card reveal app-page" data-page="residuos">
+      <div class="section-head">
+        <h2>Controle de Resíduos</h2>
+        <p>Cadastro de geração, classe, volume e destinação dos resíduos industriais.</p>
+      </div>
+      <div id="residuos-images" class="image-mosaic"></div>
+      <div id="residuos-tipos-residuos" class="tipos-residuos"></div>
+
+      <div class="residuos-layout">
+        <article class="form-panel">
+          <h3 id="form-title">Novo Registro</h3>
+          <form id="residue-form">
+            <input type="hidden" id="registro-id" />
+
+            <label>Data
+              <input type="date" id="data" required />
+            </label>
+
+            <label>Classe
+              <select id="classe" required>
+                <option value="Classe I">Classe I (Perigoso)</option>
+                <option value="Classe IIA">Classe IIA (Não inerte)</option>
+                <option value="Classe IIB">Classe IIB (Inerte)</option>
+              </select>
+            </label>
+
+            <label>Tipo de Resíduo
+              <select id="tipo" required></select>
+            </label>
+
+            <label>Origem / Setor
+              <input type="text" id="origem" placeholder="Ex.: Caldeira de recuperação" required />
+            </label>
+
+            <label>Quantidade (kg)
+              <input type="number" id="quantidade" step="0.1" min="0" required />
+            </label>
+
+            <label>Destinação
+              <select id="destino" required>
+                <option value="Reciclagem">Reciclagem</option>
+                <option value="Coprocessamento">Coprocessamento</option>
+                <option value="Reaproveitamento energético">Reaproveitamento energético</option>
+                <option value="Aterro industrial licenciado">Aterro industrial licenciado</option>
+                <option value="Tratamento externo especializado">Tratamento externo especializado</option>
+              </select>
+            </label>
+
+            <label>Status
+              <select id="status" required>
+                <option value="Aguardando coleta">Aguardando coleta</option>
+                <option value="Em transporte">Em transporte</option>
+                <option value="Destinado">Destinado</option>
+                <option value="Não conformidade">Não conformidade</option>
+              </select>
+            </label>
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary" id="save-btn">Salvar Registro</button>
+              <button type="button" class="btn" id="cancel-btn" hidden>Cancelar Edição</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="table-panel">
+          <div class="filter-header">
+            <button type="button" class="btn filter-toggle" id="residue-filter-toggle" aria-expanded="false" aria-controls="residue-filter-panel">
+              Filtros
+            </button>
+          </div>
+          <div class="table-tools filter-panel" id="residue-filter-panel" hidden>
+            <input type="text" id="search" placeholder="Filtrar por tipo, setor ou destino" />
+            <select id="filtro-status">
+              <option value="">Todos os status</option>
+              <option value="Aguardando coleta">Aguardando coleta</option>
+              <option value="Em transporte">Em transporte</option>
+              <option value="Destinado">Destinado</option>
+              <option value="Não conformidade">Não conformidade</option>
+            </select>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Resíduo</th>
+                  <th>Classe</th>
+                  <th>Origem</th>
+                  <th>Quantidade (kg)</th>
+                  <th>Destinação</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="residue-table-body"></tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="tratamento" class="card reveal app-page" data-page="tratamento">
+      <div class="section-head">
+        <h2>Tratamento de Água e Efluentes</h2>
+        <p>Etapas de tratamento, reúso e monitoramento da água e dos efluentes do processo industrial.</p>
+      </div>
+      <div id="tratamento-images" class="image-mosaic"></div>
+      <div id="fluxo-list" class="timeline-grid"></div>
+    </section>
+
+    <section id="planos" class="card reveal app-page" data-page="planos">
+      <div class="section-head">
+        <h2>Planos de Ação de Passivos</h2>
+        <p>Planos estruturados para erosão hídrica (PRAD) e vazamento de óleo.</p>
+      </div>
+      <div id="planos-images" class="image-mosaic"></div>
+      <div id="planos-list" class="planos-grid"></div>
+
+      <article class="stats-card plan-cronograma-card">
+        <h3>Cronograma Integrado dos Passivos</h3>
+        <div class="table-wrap">
+          <table class="relatorio-table">
+            <thead>
+              <tr>
+                <th>Passivo</th>
+                <th>Fase</th>
+                <th>Ação Principal</th>
+                <th>Objetivo Técnico</th>
+                <th>Prazo</th>
+                <th>Prazo (dias)</th>
+                <th>Prioridade</th>
+                <th>Status</th>
+                <th>Responsável</th>
+              </tr>
+            </thead>
+            <tbody id="cronograma-passivos-body"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <div class="stats-grid">
+        <article class="stats-card">
+          <h3>Prazo por Fase (dias)</h3>
+          <div id="cronograma-fase-bars" class="bars"></div>
+        </article>
+        <article class="stats-card">
+          <h3>Foco de Monitoramento</h3>
+          <div id="cronograma-monitoramento-chart" class="donut-chart"></div>
+          <div id="cronograma-monitoramento-legend" class="chart-legend"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="relatorio" class="card reveal app-page" data-page="relatorio">
+      <div class="section-head">
+        <h2>Relatório de Recuperação de Área Degradada (PRAD)</h2>
+        <p>Diagnóstico, metas, cronograma e plano de ação para recuperação ambiental.</p>
+      </div>
+      <div id="relatorio-images" class="image-mosaic"></div>
+
+      <div id="relatorio-indicadores" class="relatorio-kpi-grid"></div>
+
+      <div class="relatorio-grid">
+        <article class="relatorio-card">
+          <h3>Diagnóstico Técnico</h3>
+          <div id="relatorio-diagnostico" class="list"></div>
+        </article>
+
+        <article class="relatorio-card">
+          <h3>Objetivos e Metas</h3>
+          <ul id="relatorio-metas" class="simple-list"></ul>
+        </article>
+      </div>
+
+      <article class="relatorio-card">
+        <h3>Cronograma de Recuperação</h3>
+        <div class="table-wrap">
+          <table class="relatorio-table">
+            <thead>
+              <tr>
+                <th>Fase</th>
+                <th>Período</th>
+                <th>Escopo</th>
+                <th>Entregável</th>
+              </tr>
+            </thead>
+            <tbody id="relatorio-cronograma"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="relatorio-card">
+        <h3>Plano de Ação</h3>
+        <div class="table-wrap">
+          <table class="relatorio-table">
+            <thead>
+              <tr>
+                <th>Ação</th>
+                <th>Responsável</th>
+                <th>Prazo</th>
+                <th>Prioridade</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="relatorio-acoes"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="relatorio-card">
+        <h3>Plano de Monitoramento</h3>
+        <ul id="relatorio-monitoramento" class="simple-list"></ul>
+      </article>
+
+      <article class="relatorio-card prad-generator">
+        <h3>Gerador do Relatório PRAD</h3>
+        <p class="subtitle">Preencha os campos para gerar e baixar o relatório PRAD atualizado.</p>
+
+        <div class="prad-form-grid">
+          <label>Empresa
+            <input type="text" id="prad-empresa" />
+          </label>
+          <label>Empreendimento
+            <input type="text" id="prad-empreendimento" />
+          </label>
+          <label>Localização
+            <input type="text" id="prad-localizacao" />
+          </label>
+          <label>Responsável técnico
+            <input type="text" id="prad-responsavel" />
+          </label>
+          <label>Data da vistoria
+            <input type="date" id="prad-data-vistoria" />
+          </label>
+          <label>Prazo (meses)
+            <input type="number" id="prad-prazo-meses" min="1" max="120" step="1" />
+          </label>
+          <label>Área total degradada (ha)
+            <input type="number" id="prad-area-total" min="0" step="0.1" />
+          </label>
+          <label>Área em recuperação (ha)
+            <input type="number" id="prad-area-recuperacao" min="0" step="0.1" />
+          </label>
+          <label>Cobertura vegetal atual (%)
+            <input type="number" id="prad-cobertura-vegetal" min="0" max="100" step="0.1" />
+          </label>
+          <label>Meta de sobrevivência (%)
+            <input type="number" id="prad-meta-sobrevivencia" min="0" max="100" step="0.1" />
+          </label>
+        </div>
+
+        <div class="relatorio-grid">
+          <article class="relatorio-card">
+            <h3>Diagnóstico técnico</h3>
+            <textarea id="prad-diagnostico-texto" rows="8"></textarea>
+          </article>
+          <article class="relatorio-card">
+            <h3>Objetivos e metas</h3>
+            <textarea id="prad-metas-texto" rows="8"></textarea>
+          </article>
+        </div>
+
+        <article class="relatorio-card">
+          <h3>Plano de ação (editável)</h3>
+          <div class="table-wrap">
+            <table class="relatorio-table">
+              <thead>
+                <tr>
+                  <th>Ação</th>
+                  <th>Responsável</th>
+                  <th>Prioridade</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="prad-acoes-edit-body"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <label>Observações técnicas complementares
+          <textarea id="prad-observacoes" rows="4"></textarea>
+        </label>
+
+        <article class="relatorio-card">
+          <h3>Prévia do relatório gerado</h3>
+          <textarea id="prad-preview" rows="16" readonly></textarea>
+        </article>
+
+        <div class="form-actions">
+          <button type="button" class="btn primary" id="download-prad-md">Baixar relatório (.md)</button>
+          <button type="button" class="btn primary" id="download-prad-txt">Baixar relatório (.txt)</button>
+          <button type="button" class="btn primary" id="download-prad-xlsx">Baixar relatório (.xlsx)</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="galeria" class="card reveal app-page" data-page="galeria">
+      <div class="section-head">
+        <h2>Galeria Técnica da Apresentação</h2>
+        <p>Slides e fotos originais utilizados como base de consulta operacional.</p>
+      </div>
+      <div class="table-tools">
+        <input type="text" id="slide-search" placeholder="Buscar por tema: água, resíduos, carbono, licenciamento..." />
+      </div>
+      <div id="slides-grid" class="slides-grid">
+        <article class="slide-card gallery-static-card" data-slide="1">
+          <h3>Slide 1: ENGENHARIA &amp; SUSTENTABILIDADE</h3>
+          <div class="slide-image-group"><img src="assets/images/slide01.png" alt="Slide 1 - ENGENHARIA &amp; SUSTENTABILIDADE" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> O Futuro Verde</p>
+          <ul class="slide-points"><li>O Futuro Verde</li><li>da Celulose</li><li>A Gestão Ambiental como pilar estratégico</li><li>nas operações da Bracell.</li><li>INTEGRANTES DO GRUPO:</li><li>Alan Bertini, Amanda Libardoni, Ana Laura Wenceslau</li><li>Ana Livia Ferretti, Lucas Gabriel, Jaina Cristiane</li><li>CURSO: ENGENHARIA CIVIL | UNISAGRADO</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="2">
+          <h3>Slide 2: Introdução</h3>
+          <div class="slide-image-group"><img src="assets/images/slide02.png" alt="Slide 2 - Introdução" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> A gestão ambiental tornou-se essencial no setor de celulose e papel.</p>
+          <ul class="slide-points"><li>A gestão ambiental tornou-se essencial no setor de celulose e papel.</li><li>• O consumo de recursos naturais, a geração de resíduos e as emissões exigem controle técnico.</li><li>• A Bracell investe em práticas sustentáveis e manejo florestal responsável.</li><li>Objetivos do trabalho:</li><li>• Apresentar a gestão ambiental da Bracell.</li><li>• Demonstrar as práticas sustentáveis adotadas.</li><li>• Analisar os impactos ambientais e as medidas mitigadoras.</li><li>• Avaliar os programas socioambientais da empresa.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="3">
+          <h3>Slide 3: Política Ambiental (Sustentabilidade) e Programas Ambientais</h3>
+          <div class="slide-image-group"><img src="assets/images/slide03.png" alt="Slide 3 - Política Ambiental (Sustentabilidade) e Programas Ambientais" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Programas Ambientais</p>
+          <ul class="slide-points"><li>Programas Ambientais</li><li>Plano Ambiental da Construção (PAC)</li><li>Controle Ambiental das Empreiteiras</li><li>Monitoramento das Águas Superficiais e Subterrâneas</li><li>Gerenciamento de Resíduos Sólidos e Efluentes</li><li>Monitoramento de Fauna e Flora</li><li>Controle de Atropelamento de Fauna</li><li>Saúde e Segurança do Trabalhador</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="4">
+          <h3>Slide 4: Caracterização da Empresa</h3>
+          <div class="slide-image-group"><img src="assets/images/slide04.png" alt="Slide 4 - Caracterização da Empresa" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> A Bracell atua nos segmentos de:</p>
+          <ul class="slide-points"><li>A Bracell atua nos segmentos de:</li><li>• Produção de celulose solúvel.</li><li>• Fabricação de papel e derivados.</li><li>• Manejo florestal sustentável.</li><li>Principais unidades:</li><li>• Lençóis Paulista - SP.</li><li>• Polos em Bauru, Pederneiras e região.</li><li>• Operações florestais localizadas no interior paulista.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="5">
+          <h3>Slide 5: Gestão de Resíduos Industriais</h3>
+          <div class="slide-image-group"><img src="assets/images/slide05.png" alt="Slide 5 - Gestão de Resíduos Industriais" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Resíduos controlados:</p>
+          <ul class="slide-points"><li>Resíduos controlados:</li><li>• Cinzas (CAL) industriais</li><li>• Lodo biológico</li><li>• Óleos lubrificantes</li><li>• Resíduos químicos</li><li>• Resíduos recicláveis</li><li>• Biomassa</li><li>Destinação:</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="6">
+          <h3>Slide 6: Tratamento de Água e Efluentes</h3>
+          <div class="slide-image-group"><img src="assets/images/slide07.png" alt="Slide 6 - Tratamento de Água e Efluentes" loading="lazy" /><img src="assets/images/slide06.png" alt="Slide 6 - Fluxograma do processo produtivo" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Sistemas adotados para controle hídrico e tratamento de efluentes industriais.</p>
+          <ul class="slide-points"><li>Sistemas adotados para controle hídrico e tratamento de efluentes industriais.</li><li>• Tratamento de água bruta e efluentes industriais.</li><li>• Reúso de água nos processos.</li><li>• Monitoramento hídrico contínuo.</li><li>• Controle rigoroso da qualidade da água.</li><li>• Redução do consumo de água e atendimento às exigências ambientais.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="7">
+          <h3>Slide 7: Gestão dos Recursos Hídricos</h3>`n          <div class="slide-image-group"><img src="assets/images/slide07.png" alt="Slide 7 - Estação de tratamento de água e efluentes" loading="lazy" /><img src="assets/images/slide28.png" alt="Slide 7 - Lagoas e gestão hídrica" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Sistemas adotados:</p>
+          <ul class="slide-points"><li>Sistemas adotados:</li><li>• Tratamento de efluentes industriais</li><li>• Reúso de água nos processos</li><li>• Monitoramento hídrico contínuo</li><li>• Redução do consumo de água</li><li>Ações ambientais:</li><li>• Implementação e melhoria de estações de tratamento</li><li>• Controle rigoroso da qualidade da água</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="8">
+          <h3>Slide 8: Gestão de Agua / Efluentes / Resíduos - Dados 2025</h3>`n          <div class="slide-image-group"><img src="assets/images/slide28.png" alt="Slide 8 - Lagoas e efluentes" loading="lazy" /><img src="assets/images/slide08.png" alt="Slide 8 - Gestão territorial e indicadores" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Indicadores e metas hídricas:</p>
+          <ul class="slide-points"><li>Indicadores e metas hídricas:</li><li>Praticas operacionais:</li><li>- Monitoramento de nascentes e cursos d&#x27;agua.</li><li>- Reuso de agua e tratamento de efluentes com controle contínuo.</li><li>- Recuperação de APPs hídricas e melhoria de eficiência industrial.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="9">
+          <h3>Slide 9: Captação Hídrica para Apoio às Operações Florestais</h3>
+          <div class="slide-image-group"><img src="assets/images/slide09.png" alt="Slide 9 - Captação Hídrica para Apoio às Operações Florestais" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Quando não há ponto de captação regularizado, é aberto processo de regularização ambiental.</p>
+          <ul class="slide-points"><li>Quando não há ponto de captação regularizado, é aberto processo de regularização ambiental.</li><li>Fluxo regulatório (SP):</li><li>• Solicitação de Outorga: Protocolo oficial de uso de recursos hídricos junto ao órgão outorgante estadual (DAEE/SP Águas)</li><li>• Exigências Ambientais: Atendimento integral das exigências ambientais complementares aplicáveis, com interface direta junto à CETESB.</li><li>• Aprovação e Emissão: Análise técnica final e emissão do ato autorizativo (Portaria de Outorga) para a implantação física do ponto.</li><li>Prazo médio de análise:</li><li>• Entre 3 e 6 meses, conforme disponibilidade hídrica e complexidade do processo.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="10">
+          <h3>Slide 10: Uso da Água e Estruturas de Captação</h3>
+          <div class="slide-image-group"><img src="assets/images/slide10_agua.png" alt="Slide 10 - Uso da água e estruturas de captação" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Finalidades operacionais da água captada:</p>
+          <ul class="slide-points"><li>Finalidades operacionais da água captada:</li><li>• Construção e umectação de estradas florestais.</li><li>• Controle de poeira nas vias de acesso.</li><li>• Irrigação de mudas no período pós-plantio.</li><li>• Apoio às operações de reflorestamento.</li><li>• Redução de impactos ambientais por poeira e déficit hídrico.</li><li>Estruturas implantadas:</li><li>•  Sistema de bombeamento e tubulações.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="11">
+          <h3>Slide 11: Geração de Energia por Biomassa e Licor Negro</h3>
+          <div class="slide-image-group"><img src="assets/images/slide11.png" alt="Slide 11 - Geração de Energia por Biomassa e Licor Negro" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Como a energia é gerada no processo industrial:</p>
+          <ul class="slide-points"><li>Como a energia é gerada no processo industrial:</li><li>- A biomassa florestal (cascas e resíduos de madeira) é utilizada como combustível renovável.</li><li>- O licor negro (subproduto orgânico do cozimento da madeira) é queimado na caldeira de recuperação.</li><li>- O calor gerado produz vapor de alta pressão para acionamento de turbogeradores.</li><li>- A energia elétrica gerada abastece a operação industrial e reduz a dependência de fontes fosseis.</li><li>Complemento de energia limpa:</li><li>- Uso de sistema solar na operação paulista da Bracell Papeis.</li><li>- Integração entre biomassa, licor negro e energia solar para maior eficiência energética.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="12">
+          <h3>Slide 12: Excedente de Energia e Contribuição ao SIN</h3>
+          <div class="slide-image-group"><img src="assets/images/slide12.png" alt="Slide 12 - Excedente de Energia e Contribuição ao SIN" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Autossuficiência e exportação de energia:</p>
+          <ul class="slide-points"><li>Autossuficiência e exportação de energia:</li><li>- A planta foi concebida para autossuficiência energética.</li><li>- O excedente e direcionado ao Sistema Interligado Nacional (SIN).</li><li>Faixa de referencia divulgada no projeto:</li><li>- Entre 150 MW e 180 MW de energia limpa para a rede.</li><li>Benefícios ambientais e operacionais:</li><li>- Redução de emissão associada a matriz energética industrial.</li><li>- Maior resiliência energética e previsibilidade de operação.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="13">
+          <h3>Slide 13: Manejo Florestal Sustentável</h3>
+          <div class="slide-image-group"><img src="assets/images/slide13.png" alt="Slide 13 - Manejo Florestal Sustentável" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> A Bracell utiliza florestas plantadas de eucalipto para abastecimento industrial.</p>
+          <ul class="slide-points"><li>A Bracell utiliza florestas plantadas de eucalipto para abastecimento industrial.</li><li>Medidas sustentáveis:</li><li>• Reflorestamento contínuo</li><li>• Preservação da biodiversidade</li><li>• Conservação de APPs (Áreas de Preservação Permanente)</li><li>• Implantação de corredores ecológicos</li><li>• Proteção da fauna e da flora</li><li>Compromisso ambiental:</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="14">
+          <h3>Slide 14: Licenciamento Ambiental</h3>
+          <div class="slide-image-group"><img src="assets/images/slide14.png" alt="Slide 14 - Licenciamento Ambiental" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> As operações seguem exigências dos órgãos competentes.</p>
+          <ul class="slide-points"><li>As operações seguem exigências dos órgãos competentes.</li><li>Licenças ambientais:</li><li>• Licença Prévia (LP)</li><li>• Licença de Instalação (LI)</li><li>• Licença de Operação (LO)</li><li>Órgãos fiscalizadores:</li><li>• CETESB  • IBAMA  • Secretarias ambientais.</li><li>Estudos e controles:</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="15">
+          <h3>Slide 15: Responsabilidade Socioambiental</h3>
+          <div class="slide-image-group"><img src="assets/images/slide15.png" alt="Slide 15 - Responsabilidade Socioambiental" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Ações voltadas para:</p>
+          <ul class="slide-points"><li>Ações voltadas para:</li><li>• Educação ambiental</li><li>• Desenvolvimento regional</li><li>• Capacitação profissional</li><li>• Projetos comunitários</li><li>• Sustentabilidade social</li><li>Fundação Bracell:</li><li>• Apoio à educação</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="16">
+          <h3>Slide 16: Benefícios da Gestão Ambiental</h3>
+          <div class="slide-image-group"><img src="assets/images/slide16.png" alt="Slide 16 - Benefícios da Gestão Ambiental" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Ambientais:</p>
+          <ul class="slide-points"><li>Ambientais:</li><li>• Redução de impactos</li><li>• Conservação de recursos naturais</li><li>• Redução de resíduos</li><li>• Controle de poluição</li><li>Econômicos:</li><li>• Redução de custos e maior eficiência operacional</li><li>Sociais:</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="17">
+          <h3>Slide 17: Passivo Ambiental Identificado</h3>
+          <div class="slide-image-group"><img src="assets/images/slide17.png" alt="Slide 17 - Passivo Ambiental Identificado" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Ocorrência: erosão hídrica por ausência de marcação topográfica e curva de nível.</p>
+          <ul class="slide-points"><li>Ocorrência: erosão hídrica por ausência de marcação topográfica e curva de nível.</li><li>Diagnóstico de campo:</li><li>• Formação de ravina com potencial evolução para voçoroca.</li><li>• Concentração de enxurrada em linha de maior declive.</li><li>• Solo exposto, perda de material e instabilidade de taludes.</li><li>• Risco de carreamento de sedimentos para áreas a jusante.</li><li>Ação imediata adotada:</li><li>• Isolamento da área, desvio provisório de água e barreiras de sedimento.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="18">
+          <h3>Slide 18: Plano de Ação PRAD</h3>
+          <div class="slide-image-group"><img src="assets/images/slide18.png" alt="Slide 18 - Plano de Ação PRAD" loading="lazy" /><img src="assets/images/slide17.png" alt="Slide 18 - Área degradada do PRAD" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Contenção emergencial.</p>
+          <ul class="slide-points"><li>Contenção emergencial.</li><li>• Isolamento, desvio de água e controle inicial de sedimentos.</li><li>Diagnóstico e projeto executivo.</li><li>• Levantamento topográfico, ensaios de solo e dimensionamento de drenagem.</li><li>Obras de estabilização.</li><li>• Curvas de nível, canaletas, dissipadores e check dams.</li><li>Revegetação e monitoramento.</li><li>• Biomanta, cobertura vegetal, inspeções quinzenais e correções.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="19">
+          <h3>Slide 19: Acidente Ambiental - Vazamento de Óleo</h3>
+          <div class="slide-image-group"><img src="assets/images/slide19.png" alt="Slide 19 - Acidente Ambiental - Vazamento de Óleo" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Evento: vazamento de óleo em equipamento móvel sem kit de mitigação e sem bacia de contenção.</p>
+          <ul class="slide-points"><li>Evento: vazamento de óleo em equipamento móvel sem kit de mitigação e sem bacia de contenção.</li><li>Passivo ambiental identificado:</li><li>• Contaminação do solo superficial e potencial infiltração para camadas mais profundas.</li><li>• Risco de carreamento por chuva para drenagens e corpos hídricos.</li><li>• Geração de resíduo perigoso (solo contaminado, estopas, absorventes e EPIs).</li><li>• Não conformidade operacional por ausência de resposta imediata estruturada.</li><li>Classificação preliminar: severidade alta, prioridade de atendimento imediata.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="20">
+          <h3>Slide 20: Plano de Ação / Cronograma – Passivos Ambientais</h3>
+          <div class="slide-image-group"><img src="assets/images/slide19.png" alt="Slide 20 - Plano de Ação / Cronograma - Passivos Ambientais" loading="lazy" /><img src="assets/images/slide20.png" alt="Slide 20 - Prazo de execução dos passivos ambientais" loading="lazy" /></div>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="21">
+          <h3>Slide 21: CRONOGRAMA DE EXECUÇÃO DOS PASSIVOS AMBIENTAIS</h3>
+          <div class="slide-image-group"><img src="assets/images/slide20.png" alt="Slide 21 - Cronograma de Execução dos Passivos Ambientais" loading="lazy" /></div>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="22">
+          <h3>Slide 22: Relatório 2025 - Clima e Carbono</h3>
+          <div class="slide-image-group"><img src="assets/images/slide24.png" alt="Slide 22 - Relatório 2025 - Clima e Carbono" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Resultados reportados pela Bracell (2025):</p>
+          <ul class="slide-points"><li>Resultados reportados pela Bracell (2025):</li><li>- 6 milhões de tCO2 removidos da atmosfera entre 2020 e 2025.</li><li>- Em 2025, remoções de 3,4 milhões de tCO2e.</li><li>- Composição 2025: 1,8 milhão (florestas plantadas) + 1,6 milhão (áreas nativas).</li><li>Metas e monitoramento:</li><li>- Meta Bracell 2030: 25 milhões de tCO2e removidos (2020-2030).</li><li>- Meta de reduzir 75% das emissões por tonelada de produto ate 2030.</li><li>- Uso de torres de fluxo e modelos estatísticos para maior precisão do inventario.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="23">
+          <h3>Slide 23: Perfil Territorial e Operações</h3>
+          <div class="slide-image-group"><img src="assets/images/slide22.png" alt="Slide 23 - Perfil Territorial e Operações" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Perfil geral do negocio:</p>
+          <ul class="slide-points"><li>Perfil geral do negocio:</li><li>- Operações industriais e florestais em São Paulo, Bahia e Centro-Oeste.</li><li>- Area total sob gestão de aproximadamente 700 mil hectares.</li><li>- Mais de 30% da área destinada a conservação de vegetação nativa.</li><li>- Modelo de mosaico florestal: eucalipto intercalado com vegetação nativa.</li><li>Rastreabilidade territorial:</li><li>- Mapeamento georreferenciado de fazendas e cruzamento com bases oficiais (CAR).</li><li>- Controle de conformidade fundiária e ambiental nas áreas de operação.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="24">
+          <h3>Slide 24: Distribuicao de Áreas e Localidades Principais</h3>
+          <div class="slide-image-group"><img src="assets/images/slide08.png" alt="Slide 24 - Distribuição de Áreas e Localidades Principais" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Distribuição territorial reportada:</p>
+          <ul class="slide-points"><li>Distribuição territorial reportada:</li><li>- Áreas de manejo: cultivo sustentável de eucalipto.</li><li>- Áreas de conservação: cerca de 30% da área sob gestão dedicada a vegetação nativa.</li><li>- Area total sob gestão: aproximadamente 700 mil hectares.</li><li>- Rastreabilidade territorial com georreferenciamento e bases oficiais do CAR.</li><li>Localidades principais:</li><li>- São Paulo: Lençóis Paulista e base florestal regional.</li><li>- Bahia: Camaçari e Alagoinhas.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="25">
+          <h3>Slide 25: Biodiversidade e Paisagens Sustentáveis</h3>
+          <div class="slide-image-group"><img src="assets/images/slide21.png" alt="Slide 25 - Biodiversidade e Paisagens Sustentáveis" loading="lazy" /><img src="assets/images/slide25.png" alt="Slide 25 - Monitoramento e relatório ambiental" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Compromissos e resultados:</p>
+          <ul class="slide-points"><li>Compromissos e resultados:</li><li>- Compromisso Um-Para-Um: conservar 1 ha para cada 1 ha plantado.</li><li>- Resultado informado: 107% da meta de conservação superada.</li><li>- Em 2025, 301 mil ha de vegetação nativa conservada.</li><li>Ações executadas:</li><li>- 4 RPPNs e corredores ecológicos.</li><li>- Monitoramento de fauna anual/bianual e flora em ciclos de 3 a 5 anos.</li><li>- Resgate de fauna durante colheitas e projetos científicos de restauração.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="26">
+          <h3>Slide 26: Clima, Incêndios e Inovação</h3>`n          <div class="slide-image-group"><img src="assets/images/slide26.png" alt="Slide 26 - Clima, incêndios e inovação" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Sustentabilidade, clima e inovação</p>
+          <ul class="slide-points"><li>Sustentabilidade, clima e inovação</li><li>Mudanças climáticas e energia: meta de remover 25 milhões de tCO2e até 2030 e reduzir 75% das emissões por tonelada de produto. Inventários alinhados à ISO 14064, GHG Protocol e IPCC.</li><li>Prevenção de incêndios: monitoramento com torres, satélites e inteligência artificial, além de equipes de resposta rápida e treinamento comunitário.</li><li>Pesquisa e inovação: parcerias com USP, UNESP, UFBA, IPE e WWF, com uso de sensoriamento remoto, monitoramento de fauna e modelos florestais.</li><li>Desafios ambientais: controle de emissões, gestão de resíduos, preservação da biodiversidade, uso racional da água, fiscalização ambiental e sustentabilidade contínua.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="27">
+          <h3>Slide 27: Conformidade, Certificações e Dados-Chave</h3>`n          <div class="slide-image-group"><img src="assets/images/slide27.png" alt="Slide 27 - Conformidade, certificações e dados-chave" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Conformidade e governança:</p>
+          <ul class="slide-points"><li>Conformidade e governança:</li><li>- Atendimento ao Código Florestal, CONAMA e IBAMA.</li><li>- Relatórios anuais com diretrizes GRI e painel de indicadores.</li><li>Certificações adquiridas:</li><li>ISO 14001: gestão ambiental e melhoria contínua</li><li>FSC: manejo florestal responsável e rastreabilidade</li><li>CERFLOR/PEFC: certificação florestal e conformidade setorial</li><li>ISO 9001: gestão da qualidade</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="28">
+          <h3>Slide 28: Consumo Hídrico e Efluentes</h3>`n          <div class="slide-image-group"><img src="assets/images/slide28.png" alt="Slide 28 - Consumo hídrico e efluentes" loading="lazy" /><img src="assets/images/slide07.png" alt="Slide 28 - Tratamento de água e efluentes" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> Alto consumo de água nas etapas de processamento e geração de efluentes que requerem tratamento especializado antes do descarte.</p>
+          <ul class="slide-points"><li>Alto consumo de água nas etapas de processamento e geração de efluentes que requerem tratamento especializado antes do descarte.</li><li>Consumo Energético</li><li>Demanda energética significativa em secagem térmica e moldagem, com emissões atmosféricas indiretas da logística e fontes de combustão.</li><li>Origem da Celulose</li><li>Necessidade de rastreabilidade da cadeia fornecedora e garantia de práticas sustentáveis de manejo florestal.</li><li>Aditivos e Produtos Químicos</li><li>Uso de plastificantes, corantes e aditivos com potencial impacto químico, exigindo controle rigoroso e minimização de riscos.</li><li>Gestão de Resíduos</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="29">
+          <h3>Slide 29: Sistema de Gestão Ambiental e Monitoramento</h3>
+          <div class="slide-image-group"><img src="assets/images/slide29.png" alt="Slide 29 - Sistema de Gestão Ambiental e Monitoramento" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> SGA Baseado na ISO 14001</p>
+          <ul class="slide-points"><li>SGA Baseado na ISO 14001</li><li>O Sistema de Gestão Ambiental da Bracell é estruturado com base nas diretrizes da norma ISO 14001, garantindo uma abordagem sistemática, contínua e auditável para a gestão dos aspectos e impactos ambientais.</li><li>Auditorias Internas</li><li>Ciclos regulares de auditoria interna para verificação da conformidade com os requisitos do SGA e identificação de oportunidades de melhoria.</li><li>Indicadores de Ecoeficiência</li><li>Monitoramento de indicadores-chave como consumo específico de água, energia por tonelada produzida e geração de resíduos por unidade de produto.</li><li>Revisão Gerencial Periódica</li><li>Análise crítica pela alta direção dos resultados ambientais, custos de conformidade e desempenho do SGA, com definição de metas para o próximo ciclo.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="30">
+          <h3>Slide 30: Soluções de Mitigação de Riscos Ambientais</h3>
+          <div class="slide-image-group"><img src="assets/images/slide30.png" alt="Slide 30 - Soluções de Mitigação de Riscos Ambientais" loading="lazy" /></div>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="31">
+          <h3>Slide 31: Conclusão</h3>
+          <div class="slide-image-group"><img src="assets/images/slide31.png" alt="Slide 31 - Conclusão" loading="lazy" /></div>
+          <p class="slide-comment"><strong>Tema:</strong> A Bracell demonstra que a gestão ambiental é fundamental para:</p>
+          <ul class="slide-points"><li>A Bracell demonstra que a gestão ambiental é fundamental para:</li><li>• Sustentabilidade.</li><li>• Competitividade.</li><li>• Responsabilidade socioambiental.</li><li>As práticas adotadas contribuem para:</li><li>• Redução dos impactos ambientais.</li><li>• Preservação dos recursos naturais.</li><li>• Desenvolvimento sustentável da região.</li></ul>
+        </article>
+        <article class="slide-card gallery-static-card" data-slide="32">
+          <h3>Slide 32: Referências Bibliográficas</h3>
+          <div class="slide-image-group"></div>
+          <p class="slide-comment"><strong>Tema:</strong> • BRACELL. Sustentabilidade Corporativa.</p>
+          <ul class="slide-points"><li>• BRACELL. Sustentabilidade Corporativa.</li><li>• BRACELL. Relatórios Ambientais.</li><li>• CETESB - Companhia Ambiental do Estado de São Paulo.</li><li>• Política Nacional de Resíduos Sólidos - Lei 12.305/2010.</li><li>• ISO 14001 - Sistema de Gestão Ambiental.</li><li>• Fundação Bracell.</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="aviso-legal" class="card reveal disclaimer-card legal-notice-card">
+      <h2>Aviso Legal (Disclaimer)</h2>
+      <p>
+        Aviso Legal: Este trabalho foi desenvolvido para fins exclusivamente acadêmicos. Todos os dados, nomes,
+        marcas, logotipos e imagens das empresas citadas foram utilizados de forma meramente ilustrativa e didática.
+        Este material não foi elaborado, endossado ou aprovado pela(s) empresa(s) em questão, mantendo-se intactos
+        todos os seus direitos de imagem, propriedade intelectual e marcas registradas.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="#topo-app" class="back-top-link">⬆ Subir ao topo</a></p>
+    <p>Aplicativo de Gestão de Resíduos | Engenharia & Sustentabilidade</p>
+  </footer>
+
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Subir ao topo" title="Subir ao topo">↑</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+  <script src="data/slides-data.js?v=20260527agua10"></script>
+  <script src="app.js?v=20260527agua10"></script>
+  <script src="safe-fallback.js?v=20260527agua10"></script>
+</body>
+</html>
