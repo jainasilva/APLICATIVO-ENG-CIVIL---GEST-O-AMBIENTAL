@@ -18,7 +18,7 @@ import streamlit as st
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
 IMAGES_DIR = BASE_DIR / "assets" / "images"
-HERO_IMAGE_FILE = IMAGES_DIR / "apresentacao" / "pres_slide01.png"
+HERO_IMAGE_FILE = IMAGES_DIR / "slide01.png"
 REGISTROS_FILE = DATA_DIR / "registros_residuos.json"
 IMAGENS_MANIFEST_FILE = DATA_DIR / "imagens_manifest.json"
 AVISO_LEGAL_DISCLAIMER = (
@@ -31,27 +31,27 @@ AVISO_LEGAL_DISCLAIMER = (
 
 IMAGENS_SECOES = {
     "dashboard": [
-        ("apresentacao/pres_slide01.png", "Visão geral da unidade industrial"),
-        ("apresentacao/pres_slide25.png", "Indicadores de desempenho e verificação"),
+        ("slide01.png", "Visão geral da unidade industrial"),
+        ("slide25.png", "Indicadores de desempenho e verificação"),
     ],
     "residuos": [
-        ("apresentacao/pres_slide05.jpg", "Gestão de resíduos industriais"),
-        ("apresentacao/pres_slide06.png", "Tratamento e destinação de resíduos"),
+        ("slide05.png", "Gestão de resíduos industriais"),
+        ("slide06.png", "Tratamento e destinação de resíduos"),
     ],
     "tratamento": [
-        ("apresentacao/pres_slide06.png", "Fluxo simplificado do processo produtivo"),
-        ("apresentacao/pres_slide07.jpg", "Tratamento de água e efluentes"),
-        ("apresentacao/pres_slide08.png", "Dados operacionais de água, efluentes e resíduos"),
+        ("slide06.png", "Fluxo simplificado do processo produtivo"),
+        ("slide07.png", "Tratamento de água e efluentes"),
+        ("slide08.png", "Dados operacionais de água, efluentes e resíduos"),
     ],
     "planos": [
-        ("apresentacao/pres_slide17.png", "Passivo ambiental: erosão"),
-        ("apresentacao/pres_slide18.jpg", "Passivo ambiental: vazamento de óleo"),
-        ("apresentacao/pres_slide20.png", "Plano de ação e cronograma dos passivos"),
+        ("slide17.png", "Passivo ambiental: erosão"),
+        ("slide18.png", "Passivo ambiental: vazamento de óleo"),
+        ("slide20.png", "Plano de ação e cronograma dos passivos"),
     ],
     "prad": [
-        ("apresentacao/pres_slide17.png", "Área degradada em recuperação"),
-        ("apresentacao/pres_slide20.png", "Cronograma de execução do PRAD"),
-        ("apresentacao/pres_slide21.png", "Tabela de acompanhamento técnico"),
+        ("slide17.png", "Área degradada em recuperação"),
+        ("slide20.png", "Cronograma de execução do PRAD"),
+        ("slide21.png", "Tabela de acompanhamento técnico"),
     ],
 }
 
@@ -2778,7 +2778,7 @@ def main() -> None:
             if not exibir_imagem_segura(hero_img, "Foto de referência da operação Bracell"):
                 st.warning("Falha ao carregar a imagem principal.")
         else:
-            st.warning("Imagem da Bracell não encontrada em assets/images/apresentacao/pres_slide01.png.")
+            st.warning("Imagem da Bracell não encontrada em assets/images/slide01.png.")
 
     if st.session_state.flash:
         st.success(st.session_state.flash)
